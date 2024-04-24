@@ -20,7 +20,7 @@ def main():
     st.write(" Web development:")
     st.write("  - HTML")
     st.write("  - CSS")
-    st.write("  - Django")
+    st.write("  - django")
     st.write("  - DjangoRestFramework")
     st.write("  - Restful APIs")
     st.write("Version control:")
