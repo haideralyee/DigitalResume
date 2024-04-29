@@ -1,0 +1,129 @@
+<!-- portfolio/templates/portfolio/home.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: pink;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: green;
+            color: yellow;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            font-style: italic;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        ul li a {
+            color: red;
+            text-decoration: none;
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #1ce609;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        section ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #1ce609;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{ introduction.name }}</h1>
+            <p>{{ introduction.about }}</p>
+            <ul>
+                <li>Email: <a href="mailto:{{ introduction.email }}">{{ introduction.email }}</a></li>
+                <li>Phone: {{ introduction.phone }}</li>
+                {% if introduction.linkedin_url %}
+                <li>LinkedIn: <a href="{{ introduction.linkedin_url }}">{{ introduction.linkedin_url }}</a></li>
+                {% endif %}
+                {% if introduction.github_url %}
+                <li>GitHub: <a href="{{ introduction.github_url }}">{{ introduction.github_url }}</a></li>
+                {% endif %}
+            </ul>
+        </header>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+                {% for project in projects %}
+                    <li><a href="{{ project.github_link }}">{{ project.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                {% for skill in skills %}
+                    <li>{{ skill.name }} - {{ skill.proficiency }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <ul>
+                {% for edu in education %}
+                    <li>{{ edu.degree }}, {{ edu.field_of_study }}, {{ edu.institution }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio</p>
+    </footer>
+</body>
+</html>
